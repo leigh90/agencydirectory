@@ -1,0 +1,47 @@
+{%extends 'base.html'%}
+{% load bootstrap4 %}
+{% load bootstrap3 %}
+
+{%block content%}
+<div class="row">
+  <h5>Welcome  {% if user.is_authenticated%} {{user.username }} {% else %} visitor {% endif %}</h5>
+
+</div>
+<div class="row">
+  {% for agency in all_agencies %}
+
+    <!-- Card -->
+
+    
+    <div class="col-lg-3 col-md-6 col-sm-10">
+      <div class="card"  >
+        <!-- Card image -->
+        <div class="view overlay">
+          <img class="card-img-top" src="{{agency.agency_logo.url}}" style=" height: 35rem; width:100%" alt="Card image cap">
+            <a href="#!">
+              <div class="mask rgba-white-slight"></div>
+            </a>
+        </div>
+                  
+        <!-- Card content -->
+        <div class="col-md-4">
+                        
+        </div>
+        <div class="card-body">
+          <!-- Title -->
+          <h4 class="card-title"> <a href="{{agency.id}}">{{agency.agencyname}}</a></h4>
+          <!-- Text -->
+          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          <!-- Button -->
+          <a href="{{agency.id}}" class="btn btn-primary">View Properties</a>
+        </div>
+      </div>
+    </div>
+  <!-- End of Card -->
+
+{% endfor%}
+
+</div>
+
+
+{%endblock%}
