@@ -72,7 +72,7 @@ SWAGGER_SETTINGS = {
             'type': 'basic'
         }
     },
-    'EXCLUDED_MEDIA_TYPES': 'None',
+    'EXCLUDED_MEDIA_TYPES': ['html'],
 
 }
 MIDDLEWARE = [
