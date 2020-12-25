@@ -65,7 +65,16 @@ cloudinary.config(
   api_secret = config('API_SECRET'),
   secure = True
 )
+SWAGGER_SETTINGS = {
+   'DEFAULT_INFO': 'import.path.to.urls.api_info',
+    'SECURITY_DEFINITIONS': {
+        'basic': {
+            'type': 'basic'
+        }
+    },
+    'EXCLUDED_MEDIA_TYPES': None,
 
+}
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
