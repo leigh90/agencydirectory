@@ -120,6 +120,7 @@ DATABASES = {
 
 db_from_env = dj_database_url.config(conn_max_age=500)
 DATABASES['default'].update(db_from_env)
+print(SECRET_KEY)
 
 
 # Password validation
@@ -168,6 +169,16 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
+
+EMAIL_BACKEND="django.core.mail.backends.smtp.EmailBackend"
+EMAIL_USE_TLS=True
+EMAIL_HOST='smtp.gmail.com'
+EMAIL_PORT=587
+EMAIL_HOST_USER=config('EMAIL_HOST_USER')
+print(EMAIL_HOST_USER)
+EMAIL_HOST_PASSWORD=config('EMAIL_HOST_PASSWORD')
+print(EMAIL_HOST_PASSWORD)
+
 
 
 django_heroku.settings(locals())
