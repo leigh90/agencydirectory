@@ -24,6 +24,9 @@ User = get_user_model()
 
 # Create your views here.
 class RegisterAPIView(generics.GenericAPIView):
+    """
+    Register View to create new user account using email, username and password
+    """
 
     serializer_class = RegisterSerializer
     
@@ -50,6 +53,9 @@ class RegisterAPIView(generics.GenericAPIView):
 
 
 class VerifyEmail(generics.GenericAPIView):
+    """
+    Verify Email View sends activation email to new registered users 
+    """
     serializer_class = EmailVerificationSerializer
     def get(self, request):
         token = request.GET.get('token')
@@ -66,6 +72,9 @@ class VerifyEmail(generics.GenericAPIView):
             return Response({'error':'Invalid Token'}, status=status.HTTP_400_BAD_REQUEST)
 
 class LoginAPIView(generics.GenericAPIView):
+    """
+    Login View to login reister users using email and username and password
+    """
 
     def post(self, request):
         serializer_class=LoginSerializer

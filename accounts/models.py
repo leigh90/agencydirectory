@@ -3,6 +3,9 @@ from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, Permis
 from rest_framework_simplejwt.tokens import RefreshToken
 # Create your models here.
 class UserManager(BaseUserManager):
+    """
+    User manager class for custom model
+    """
 
     def create_user(self, username, email, password=None):
         if username is None:
@@ -26,6 +29,9 @@ class UserManager(BaseUserManager):
         return user
 
 class User(AbstractBaseUser, PermissionsMixin):
+    """
+    Custom model class to define User Creation
+    """
     username = models.CharField(max_length=255, unique=True, db_index=True)
     email = models.EmailField(max_length=255, unique=True, db_index=True)
     is_verified = models.BooleanField(default=False)
